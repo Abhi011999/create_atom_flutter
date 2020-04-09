@@ -2,6 +2,19 @@
 
 An animated widget that displays atom with a three electrons revolving around a nucleus at its center.
 
+<table>
+  <tr>
+    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/2.0x.gif" alt="2.0x"/></th>
+    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/1.0x.gif" alt="1.0x"/></th>
+    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/0.5x.gif" alt="0.5x"/></th>
+  </tr>
+  <tr>
+    <td align="center">Scale - 2.0</td>
+    <td align="center">Scale - 1.0</td>
+    <td align="center">Scale - 0.5</td>
+  </tr>
+</table>
+
 ## Features
 
 - Can be scaled upto any size
