@@ -37,7 +37,8 @@ class _ElectronsAnimState extends State<ElectronsAnim>
       vsync: this,
     );
 
-    _animation1 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation1 = Tween<double>(
+            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller1, curve: Curves.easeInOut))
           ..addListener(() {
             _animX1 = _animation1.value;
@@ -61,7 +62,8 @@ class _ElectronsAnimState extends State<ElectronsAnim>
       vsync: this,
     );
 
-    _animation2 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation2 = Tween<double>(
+            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller2, curve: Curves.easeInOut))
           ..addListener(() {
             _animX2 = _animation2.value;
@@ -85,7 +87,8 @@ class _ElectronsAnimState extends State<ElectronsAnim>
       vsync: this,
     );
 
-    _animation3 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation3 = Tween<double>(
+            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller3, curve: Curves.easeInOut))
           ..addListener(() {
             _animX3 = _animation3.value;

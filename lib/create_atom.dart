@@ -46,9 +46,12 @@ class Atom extends StatefulWidget {
         nucleusSize = 20.0 * scale,
         electronSize = 15.0 * scale,
         orbitWidth = 107.5 * scale, // orbitWidth = containerSize / 2.0
-        orbitHeight = 207.5 * scale, // orbitHeight = containerSize - (electronSize / 2.0)
-        orbitAnimEndHeight = 200.0 * scale, // orbitAnimEndHeight = containerSize - electronSize
-        orbitAnimEndHeightFactor = 100.0 * scale; // orbitAnimEndHeightFactor = orbitAnimEndHeight / 2.0
+        orbitHeight =
+            207.5 * scale, // orbitHeight = containerSize - (electronSize / 2.0)
+        orbitAnimEndHeight =
+            200.0 * scale, // orbitAnimEndHeight = containerSize - electronSize
+        orbitAnimEndHeightFactor = 100.0 *
+            scale; // orbitAnimEndHeightFactor = orbitAnimEndHeight / 2.0
 
   @override
   State<StatefulWidget> createState() => _AtomState();
