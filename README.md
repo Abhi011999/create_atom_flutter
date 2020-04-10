@@ -4,9 +4,9 @@ An animated widget that displays atom with a three electrons revolving around a 
 
 <table>
   <tr>
-    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/2.0x.gif" alt="2.0x"/></th>
-    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/1.0x.gif" alt="1.0x"/></th>
-    <th><img src="https://github.com/Abhi011999/create_atom_flutter/blob/master/images/0.5x.gif" alt="0.5x"/></th>
+    <th><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/2.0x.gif" alt="2.0x"/></th>
+    <th><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/1.0x.gif" alt="1.0x"/></th>
+    <th><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/0.5x.gif" alt="0.5x"/></th>
   </tr>
   <tr>
     <td align="center">Scale - 2.0</td>
@@ -31,7 +31,7 @@ An animated widget that displays atom with a three electrons revolving around a 
 
 In the `pubspec.yaml` of your flutter project, add the following dependency:
 
-```
+```yaml
 dependencies:
   ...
   create_atom: ^1.0.0
@@ -39,7 +39,7 @@ dependencies:
 
 In your library add the following import:
 
-```
+```dart
 import 'package:create_atom/create_atom.dart';
 ```
 
@@ -49,7 +49,7 @@ For help getting started with Flutter, view the online [documentation](https://f
 
 ## Usage
 
-```
+```dart
 ...
 child: Atom()
 ...
@@ -77,18 +77,24 @@ Yeah, just like that.
 
 #### Types and Initial Values -
 
-| Variable       | Type       | Initial Value                  |
-| -------------- | ---------- | ------------------------------ |
-| scale          | `double`   | `1.0`                          |
-| orbit1angle    | `double`   | `0.0`                          |
-| orbit2angle    | `double`   | `45.0`                         |
-| orbit3angle    | `double`   | `-45.0`                        |
-| nucleusColor   | `Color`    | `Colors.black`                 |
-| orbitsColor    | `Color`    | `Colors.black`                 |
-| electronsColor | `Color`    | `Colors.black`                 |
-| animDuration1  | `Duration` | `Duration(milliseconds: 1000)` |
-| animDuration2  | `Duration` | `Duration(milliseconds: 2000)` |
-| animDuration3  | `Duration` | `Duration(milliseconds: 3000)` |
+| Variable       | Type       | Initial Value                        |
+| -------------- | ---------- | ------------------------------------ |
+| scale          | `double`   | `1.0`                                |
+| orbit1angle    | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
+| orbit2angle    | `double`   | `pi/4` (Radians), `45.0` (Degrees)   |
+| orbit3angle    | `double`   | `-pi/4` (Radians), `-45.0` (Degrees) |
+| nucleusColor   | `Color`    | `Colors.black`                       |
+| orbitsColor    | `Color`    | `Colors.black`                       |
+| electronsColor | `Color`    | `Colors.black`                       |
+| animDuration1  | `Duration` | `Duration(milliseconds: 1000)`       |
+| animDuration2  | `Duration` | `Duration(milliseconds: 2000)`       |
+| animDuration3  | `Duration` | `Duration(milliseconds: 3000)`       |
+
+## Example App
+
+<img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example.gif" width="100%" alt="Atoms"/>
+
+[Code Here](https://github.com/Abhi011999/create_atom_flutter/blob/master/example/lib/main.dart)
 
 ## Changelog
 
@@ -104,4 +110,4 @@ You can be of great help if you want to improve or add anything !
 
 ## License
 
-> Project licensed under standard [MIT License](https://github.com/Abhi011999/create_atom_flutter/blob/master/LICENSE).
+> Project licensed under [MIT License](https://github.com/Abhi011999/create_atom_flutter/blob/master/LICENSE).
