@@ -34,7 +34,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  create_atom: ^1.0.0
+  create_atom: ^1.2.0
 ```
 
 In your library add the following import:
