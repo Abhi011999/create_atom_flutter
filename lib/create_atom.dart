@@ -1,6 +1,7 @@
 library create_atom;
 
 import 'package:flutter/material.dart';
+
 import 'electrons_anim.dart';
 
 class Atom extends StatefulWidget {
@@ -42,16 +43,16 @@ class Atom extends StatefulWidget {
     this.animDuration1 = const Duration(milliseconds: 1000),
     this.animDuration2 = const Duration(milliseconds: 2000),
     this.animDuration3 = const Duration(milliseconds: 3000),
-  })  : containerSize = 215.0 * scale,
-        nucleusSize = 20.0 * scale,
-        electronSize = 15.0 * scale,
-        orbitWidth = 107.5 * scale, // orbitWidth = containerSize / 2.0
+  })  : containerSize = 215.0,
+        nucleusSize = 20.0,
+        electronSize = 15.0,
+        orbitWidth = 107.5, // orbitWidth = containerSize / 2.0
         orbitHeight =
-            207.5 * scale, // orbitHeight = containerSize - (electronSize / 2.0)
+            207.5, // orbitHeight = containerSize - (electronSize / 2.0)
         orbitAnimEndHeight =
-            200.0 * scale, // orbitAnimEndHeight = containerSize - electronSize
-        orbitAnimEndHeightFactor = 100.0 *
-            scale; // orbitAnimEndHeightFactor = orbitAnimEndHeight / 2.0
+            200.0, // orbitAnimEndHeight = containerSize - electronSize
+        orbitAnimEndHeightFactor =
+            100.0; // orbitAnimEndHeightFactor = orbitAnimEndHeight / 2.0
 
   @override
   State<StatefulWidget> createState() => _AtomState();
@@ -93,27 +94,30 @@ class _AtomState extends State<Atom> {
   }
 
   Widget build(BuildContext context) {
-    return Container(
-      width: widget.containerSize,
-      height: widget.containerSize,
-      color: Colors.transparent,
-      child: Stack(
-        children: <Widget>[
-          _nucleus(),
-          Transform.rotate(
-            angle: widget.orbit1Angle,
-            child: _orbit(),
-          ),
-          Transform.rotate(
-            angle: widget.orbit2Angle,
-            child: _orbit(),
-          ),
-          Transform.rotate(
-            angle: widget.orbit3Angle,
-            child: _orbit(),
-          ),
-          ElectronsAnim(widget),
-        ],
+    return Transform.scale( 
+      scale: widget.scale,
+      child: Container(
+        width: widget.containerSize,
+        height: widget.containerSize,
+        color: Colors.transparent,
+        child: Stack(
+          children: <Widget>[
+            _nucleus(),
+            Transform.rotate(
+              angle: widget.orbit1Angle,
+              child: _orbit(),
+            ),
+            Transform.rotate(
+              angle: widget.orbit2Angle,
+              child: _orbit(),
+            ),
+            Transform.rotate(
+              angle: widget.orbit3Angle,
+              child: _orbit(),
+            ),
+            ElectronsAnim(widget),
+          ],
+        ),
       ),
     );
   }
