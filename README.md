@@ -26,6 +26,7 @@ An animated widget that displays atom with a three electrons revolving around a 
 - Nucleus color can be changed
 - Electrons color can be changed (support for individual color may come later)
 - Individual electron's revolution duration can be changed
+- Any widget can be added in the center instead of nucleus
 
 ## Getting Started
 
@@ -56,7 +57,22 @@ child: Atom()
 ```
 
 Yeah, just like that.
-**All variables are optional and you will get a black atom by default.**
+**All variables are optional.**
+**You will get a black atom by default.**
+
+#### centerWidget property usage -
+
+Assign `centerWidget` with any widget to display that Widget instead of nucleus.
+
+```dart
+...
+child: Atom(
+  centerWidget: Text("At Center"),
+),
+...
+```
+
+**Note:** If both `nucleusColor` and `centerWidget` are set then the Widget will get preference.
 
 ## Variables
 
@@ -74,6 +90,7 @@ Yeah, just like that.
 | animDuration1  | Defines Animation Duration of 1st electron |
 | animDuration2  | Defines Animation Duration of 2nd electron |
 | animDuration3  | Defines Animation Duration of 3rd electron |
+| centerWidget   | Defines a widget to display at center      |
 
 #### Types and Initial Values -
 
@@ -89,6 +106,7 @@ Yeah, just like that.
 | animDuration1  | `Duration` | `Duration(milliseconds: 1000)`       |
 | animDuration2  | `Duration` | `Duration(milliseconds: 2000)`       |
 | animDuration3  | `Duration` | `Duration(milliseconds: 3000)`       |
+| centerWidget   | `Widget`   | `null`                               |
 
 ## Example App
 

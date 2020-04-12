@@ -32,6 +32,9 @@ class Atom extends StatefulWidget {
   final Duration animDuration2;
   final Duration animDuration3;
 
+  // Widgets
+  final Widget centerWidget;
+
   Atom({
     this.scale = 1.0,
     this.orbit1Angle = 0.0,
@@ -43,6 +46,7 @@ class Atom extends StatefulWidget {
     this.animDuration1 = const Duration(milliseconds: 1000),
     this.animDuration2 = const Duration(milliseconds: 2000),
     this.animDuration3 = const Duration(milliseconds: 3000),
+    this.centerWidget
   })  : containerSize = 215.0,
         nucleusSize = 20.0,
         electronSize = 15.0,
@@ -81,14 +85,12 @@ class _AtomState extends State<Atom> {
   }
 
   Widget _nucleus() {
-    return Center(
-      child: Container(
-        width: widget.nucleusSize,
-        height: widget.nucleusSize,
-        decoration: BoxDecoration(
-          color: widget.nucleusColor,
-          shape: BoxShape.circle,
-        ),
+    return Container(
+      width: widget.nucleusSize,
+      height: widget.nucleusSize,
+      decoration: BoxDecoration(
+        color: widget.nucleusColor,
+        shape: BoxShape.circle,
       ),
     );
   }
@@ -102,7 +104,7 @@ class _AtomState extends State<Atom> {
         color: Colors.transparent,
         child: Stack(
           children: <Widget>[
-            _nucleus(),
+            Center(child: widget.centerWidget ?? _nucleus()),
             Transform.rotate(
               angle: widget.orbit1Angle,
               child: _orbit(),
