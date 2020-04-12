@@ -1,5 +1,6 @@
 library create_atom;
 
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'electrons_anim.dart';
@@ -38,8 +39,8 @@ class Atom extends StatefulWidget {
   Atom({
     this.scale = 1.0,
     this.orbit1Angle = 0.0,
-    this.orbit2Angle = 45.0,
-    this.orbit3Angle = -45.0,
+    this.orbit2Angle = (180/pi) * 45.0,
+    this.orbit3Angle = - (180/pi) * 45.0,
     this.nucleusColor = Colors.black,
     this.orbitsColor = Colors.black,
     this.electronsColor = Colors.black,
