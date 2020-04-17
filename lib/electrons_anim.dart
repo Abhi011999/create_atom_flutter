@@ -32,11 +32,16 @@ class _ElectronsAnimState extends State<ElectronsAnim>
             widget._atom.orbitAnimEndHeightFactor;
   }
 
-  void _anim1() {
-    _controller1 = AnimationController(
-      duration: widget._atom.animDuration1,
-      vsync: this,
-    );
+  void _anim1(bool didUpdate) {
+    if (!didUpdate)
+      _controller1 = AnimationController(
+        duration: widget._atom.animDuration1,
+        vsync: this,
+      );
+    else
+      _controller1
+        ..stop()
+        ..duration = widget._atom.animDuration1;
 
     _animation1 = Tween<double>(
             begin: 0.0, end: widget._atom.orbitAnimEndHeight)
@@ -57,11 +62,16 @@ class _ElectronsAnimState extends State<ElectronsAnim>
     _controller1.repeat(reverse: true);
   }
 
-  void _anim2() {
-    _controller2 = AnimationController(
-      duration: widget._atom.animDuration2,
-      vsync: this,
-    );
+  void _anim2(bool didUpdate) {
+    if (!didUpdate)
+      _controller2 = AnimationController(
+        duration: widget._atom.animDuration2,
+        vsync: this,
+      );
+    else
+      _controller2
+        ..stop()
+        ..duration = widget._atom.animDuration2;
 
     _animation2 = Tween<double>(
             begin: 0.0, end: widget._atom.orbitAnimEndHeight)
@@ -82,11 +92,16 @@ class _ElectronsAnimState extends State<ElectronsAnim>
     _controller2.repeat(reverse: true);
   }
 
-  void _anim3() {
-    _controller3 = AnimationController(
-      duration: widget._atom.animDuration3,
-      vsync: this,
-    );
+  void _anim3(bool didUpdate) {
+    if (!didUpdate)
+      _controller3 = AnimationController(
+        duration: widget._atom.animDuration3,
+        vsync: this,
+      );
+    else
+      _controller3
+        ..stop()
+        ..duration = widget._atom.animDuration3;
 
     _animation3 = Tween<double>(
             begin: 0.0, end: widget._atom.orbitAnimEndHeight)
@@ -110,9 +125,17 @@ class _ElectronsAnimState extends State<ElectronsAnim>
   @override
   void initState() {
     super.initState();
-    _anim1();
-    _anim2();
-    _anim3();
+    _anim1(false);
+    _anim2(false);
+    _anim3(false);
+  }
+
+  @override
+  void didUpdateWidget(ElectronsAnim oldWidget) {
+    _anim1(true);
+    _anim2(true);
+    _anim3(true);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
