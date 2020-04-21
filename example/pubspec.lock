@@ -53,9 +53,9 @@ packages:
   create_atom:
     dependency: "direct dev"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: create_atom
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.2.0"
   crypto:
     dependency: transitive

@@ -1,4 +1,4 @@
-# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"> <img src="https://img.shields.io/badge/pub.dev-package-red?style=flat-square" alt="flutter"/> </a><a href="https://flutter.dev/"> <img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/> </a><a href="https://dart.dev/"> <img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/> </a>
+# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"><img src="https://img.shields.io/badge/pub.dev-package-red?style=flat-square" alt="flutter"/></a> <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/></a> <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/></a>
 
 An animated widget that displays atom with a three electrons revolving around a nucleus at its center.
 
@@ -57,7 +57,7 @@ child: Atom()
 ```
 
 Yeah, just like that.
-**All variables are optional.**
+**All properties are optional.**
 **You will get a black atom by default.**
 
 #### centerWidget property usage -
@@ -74,11 +74,11 @@ child: Atom(
 
 **Note:** If both `nucleusColor` and `centerWidget` are set then the Widget will get preference.
 
-## Variables
+## Properties
 
 #### Definitions -
 
-| Variable       | Definition                                 |
+| Property       | Definition                                 |
 | -------------- | ------------------------------------------ |
 | scale          | Defines scale of the atom container        |
 | orbit1angle    | Defines 1st orbit's angle in degrees       |
@@ -94,7 +94,7 @@ child: Atom(
 
 #### Types and Initial Values -
 
-| Variable       | Type       | Initial Value                        |
+| Property       | Type       | Initial Value                        |
 | -------------- | ---------- | ------------------------------------ |
 | scale          | `double`   | `1.0`                                |
 | orbit1angle    | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
@@ -110,7 +110,7 @@ child: Atom(
 
 ## Example App
 
-<img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example.gif" width="100%" alt="Atoms"/>
+<img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example_random.gif" width="49%" alt="Random Atoms"/> <img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example_playground.gif" width="49%" alt="Atoms Playground"/>
 
 [Code Here](https://github.com/Abhi011999/create_atom_flutter/blob/master/example/lib/main.dart)
 
@@ -128,4 +128,4 @@ You can be of great help if you want to improve or add anything !
 
 ## License
 
-> Project licensed under [MIT License](https://github.com/Abhi011999/create_atom_flutter/blob/master/LICENSE).
+> Package and all code within licensed under [MIT License](https://github.com/Abhi011999/create_atom_flutter/blob/master/LICENSE).
