@@ -53,9 +53,9 @@ packages:
   create_atom:
     dependency: "direct dev"
     description:
-      name: create_atom
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: ".."
+      relative: true
+    source: path
     version: "1.2.0"
   crypto:
     dependency: transitive
@@ -76,6 +76,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_colorpicker:
+    dependency: "direct dev"
+    description:
+      name: flutter_colorpicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -193,3 +200,4 @@ packages:
     version: "3.7.0"
 sdks:
   dart: ">=2.7.0 <3.0.0"
+  flutter: ">=1.5.4 <2.0.0"

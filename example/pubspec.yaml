@@ -14,7 +14,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  #create_atom:
+  #  path: ../
   create_atom: ^1.2.0
+  flutter_colorpicker: ^0.3.2
 
 flutter:
   uses-material-design: true
