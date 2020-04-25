@@ -9,15 +9,15 @@ An animated widget that displays atom with a three electrons revolving around a 
     <th><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/0.5x.gif" alt="0.5x"/></th>
   </tr>
   <tr>
-    <td align="center">Scale - 2.0</td>
-    <td align="center">Scale - 1.0</td>
-    <td align="center">Scale - 0.5</td>
+    <td align="center"><code>size: 200</code></td>
+    <td align="center"><code>size: 100</code></td>
+    <td align="center"><code>size: 50</code></td>
   </tr>
 </table>
 
 ## Features
 
-- Can be scaled upto any size
+- Can be scaled upto any size within parent widget boundaries
 - Smooth animations with mathematically pre-derived ellipse path equation
 - Transparent background for flexible usage with colors
 - 3 electron orbits (support for more may come later)
@@ -52,12 +52,15 @@ For help getting started with Flutter, view the online [documentation](https://f
 
 ```dart
 ...
-child: Atom()
+child: Atom(
+  size: 100.0,
+),
 ...
 ```
 
 Yeah, just like that.
-**All properties are optional.**
+**All properties are optional except `size` property.**
+
 **You will get a black atom by default.**
 
 #### centerWidget property usage -
@@ -67,6 +70,7 @@ Assign `centerWidget` with any widget to display that Widget instead of nucleus.
 ```dart
 ...
 child: Atom(
+  size: 100.0,
   centerWidget: Text("At Center"),
 ),
 ...
@@ -80,10 +84,10 @@ child: Atom(
 
 | Property       | Definition                                 |
 | -------------- | ------------------------------------------ |
-| scale          | Defines scale of the atom container        |
-| orbit1angle    | Defines 1st orbit's angle in degrees       |
-| orbit2angle    | Defines 2nd orbit's angle in degrees       |
-| orbit3angle    | Defines 3rd orbit's angle in degrees       |
+| size           | Defines size of the atom's container       |
+| orbit1angle    | Defines 1st orbit's angle in radians       |
+| orbit2angle    | Defines 2nd orbit's angle in radians       |
+| orbit3angle    | Defines 3rd orbit's angle in radians       |
 | nucleusColor   | Defines Nucleus Color                      |
 | orbitsColor    | Defines Orbits Color                       |
 | electronsColor | Defines Electrons Color                    |
@@ -96,7 +100,7 @@ child: Atom(
 
 | Property       | Type       | Initial Value                        |
 | -------------- | ---------- | ------------------------------------ |
-| scale          | `double`   | `1.0`                                |
+| size           | `double`   | `required`                           |
 | orbit1angle    | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
 | orbit2angle    | `double`   | `pi/4` (Radians), `45.0` (Degrees)   |
 | orbit3angle    | `double`   | `-pi/4` (Radians), `-45.0` (Degrees) |
@@ -115,6 +119,8 @@ child: Atom(
 [Code Here](https://github.com/Abhi011999/create_atom_flutter/blob/master/example/lib/main.dart)
 
 ## Changelog
+
+### Breaking Changes from v1.4.0 kindly see changelog
 
 See [CHANGELOG.md](https://github.com/Abhi011999/create_atom_flutter/blob/master/CHANGELOG.md) for recent changes.
 
