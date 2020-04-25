@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'electrons_anim.dart';
 
 class Atom extends StatefulWidget {
-  // Scale
-  final double scale;
+  // Size
+  final double size;
 
   // Dimensions
   final double containerSize;
@@ -36,28 +36,25 @@ class Atom extends StatefulWidget {
   // Widgets
   final Widget centerWidget;
 
-  Atom(
-      {this.scale = 1.0,
-      this.orbit1Angle = 0.0,
-      this.orbit2Angle = (180 / pi) * 45.0,
-      this.orbit3Angle = -(180 / pi) * 45.0,
-      this.nucleusColor = Colors.black,
-      this.orbitsColor = Colors.black,
-      this.electronsColor = Colors.black,
-      this.animDuration1 = const Duration(milliseconds: 1000),
-      this.animDuration2 = const Duration(milliseconds: 2000),
-      this.animDuration3 = const Duration(milliseconds: 3000),
-      this.centerWidget})
-      : containerSize = 215.0 * scale,
-        nucleusSize = 20.0 * scale,
-        electronSize = 15.0 * scale,
-        orbitWidth = 107.5 * scale, // orbitWidth = containerSize / 2.0
-        orbitHeight =
-            207.5 * scale, // orbitHeight = containerSize - (electronSize / 2.0)
-        orbitAnimEndHeight =
-            200.0 * scale, // orbitAnimEndHeight = containerSize - electronSize
-        orbitAnimEndHeightFactor = 100.0 *
-            scale; // orbitAnimEndHeightFactor = orbitAnimEndHeight / 2.0
+  Atom({
+    @required this.size,
+    this.orbit1Angle = 0.0,
+    this.orbit2Angle = pi / 3,
+    this.orbit3Angle = -pi / 3,
+    this.nucleusColor = Colors.black,
+    this.orbitsColor = Colors.black,
+    this.electronsColor = Colors.black,
+    this.animDuration1 = const Duration(milliseconds: 1000),
+    this.animDuration2 = const Duration(milliseconds: 2000),
+    this.animDuration3 = const Duration(milliseconds: 3000),
+    this.centerWidget,
+  })  : containerSize = size,
+        nucleusSize = 0.0930 * size,
+        electronSize = 0.0698 * size,
+        orbitWidth = 0.5 * size,
+        orbitHeight = 0.9651 * size,
+        orbitAnimEndHeight = 0.9302 * size,
+        orbitAnimEndHeightFactor = 0.4651 * size;
 
   @override
   State<StatefulWidget> createState() => _AtomState();
@@ -70,14 +67,14 @@ class _AtomState extends State<Atom> {
         width: widget.orbitWidth,
         height: widget.orbitHeight,
         decoration: BoxDecoration(
-            border: Border.all(
-              color: widget.orbitsColor,
-              width: widget.electronSize / 4.0,
-            ),
-            borderRadius: BorderRadius.all(
-              Radius.elliptical(widget.orbitWidth, widget.orbitHeight),
-            ),
+          border: Border.all(
+            color: widget.orbitsColor,
+            width: widget.electronSize / 4.0,
           ),
+          borderRadius: BorderRadius.all(
+            Radius.elliptical(widget.orbitWidth, widget.orbitHeight),
+          ),
+        ),
       ),
     );
   }
@@ -94,13 +91,14 @@ class _AtomState extends State<Atom> {
   }
 
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.containerSize,
       height: widget.containerSize,
-      color: Colors.transparent,
       child: Stack(
         children: <Widget>[
-          Center(child: widget.centerWidget ?? _nucleus()),
+          Center(
+            child: widget.centerWidget ?? _nucleus(),
+          ),
           Transform.rotate(
             angle: widget.orbit1Angle,
             child: _orbit(),
