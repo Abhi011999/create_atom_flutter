@@ -102,14 +102,14 @@ child: Atom(
 | -------------- | ---------- | ------------------------------------ |
 | size           | `double`   | `required`                           |
 | orbit1angle    | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
-| orbit2angle    | `double`   | `pi/4` (Radians), `45.0` (Degrees)   |
-| orbit3angle    | `double`   | `-pi/4` (Radians), `-45.0` (Degrees) |
+| orbit2angle    | `double`   | `pi/3` (Radians), `60.0` (Degrees)   |
+| orbit3angle    | `double`   | `-pi/3` (Radians), `-60.0` (Degrees) |
 | nucleusColor   | `Color`    | `Colors.black`                       |
 | orbitsColor    | `Color`    | `Colors.black`                       |
 | electronsColor | `Color`    | `Colors.black`                       |
-| animDuration1  | `Duration` | `Duration(milliseconds: 1000)`       |
-| animDuration2  | `Duration` | `Duration(milliseconds: 2000)`       |
-| animDuration3  | `Duration` | `Duration(milliseconds: 3000)`       |
+| animDuration1  | `Duration` | `Duration(seconds: 1)`               |
+| animDuration2  | `Duration` | `Duration(seconds: 2)`               |
+| animDuration3  | `Duration` | `Duration(seconds: 3)`               |
 | centerWidget   | `Widget`   | `null`                               |
 
 ## Example App

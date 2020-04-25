@@ -5,6 +5,10 @@
 ## Code
 
 ```dart
+// Copyright 2020 Abhishek Dubey. All rights reserved.
+// Use of this source code is governed by a MIT license that can be
+// found in the LICENSE file.
+
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -85,7 +89,7 @@ class _MyAtomsState extends State<MyAtoms> {
               _showText("A "),
               _showText("T "),
               Atom(
-                scale: 0.35,
+                size: 75.25,
                 orbitsColor: Colors.white,
                 nucleusColor: Colors.white,
                 electronsColor: Colors.white,
@@ -132,7 +136,7 @@ class _RandomAtomsState extends State<RandomAtoms> {
   Widget _atomGrid() {
     return GridTile(
       child: Atom(
-        scale: 0.6,
+        size: 129,
         orbitsColor: _genRandColor(),
         nucleusColor: _genRandColor(),
         electronsColor: _genRandColor(),
@@ -180,7 +184,7 @@ class AtomPlayground extends StatefulWidget {
 }
 
 class _AtomPlaygroundState extends State<AtomPlayground> {
-  double _scale = 1.0;
+  double _scale = 200;
   double _oAngle1 = 0.0;
   double _oAngle2 = 1.047198;
   double _oAngle3 = 5.235988;
@@ -246,8 +250,8 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
           width: 350.0,
           child: Slider(
             useV2Slider: true,
-            min: 0.1,
-            max: 2.0,
+            min: 21.5,
+            max: 430,
             value: _scale,
             onChanged: (val) => setState(() => _scale = val),
           ),
@@ -492,7 +496,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
               Align(
                 alignment: Alignment.topCenter,
                 child: Atom(
-                  scale: _scale,
+                  size: _scale,
                   orbit1Angle: _oAngle1,
                   orbit2Angle: _oAngle2,
                   orbit3Angle: _oAngle3,
@@ -502,6 +506,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                   animDuration1: _eDur1,
                   animDuration2: _eDur2,
                   animDuration3: _eDur3,
+                  //centerWidget: Text("test", style: TextStyle(color: Colors.white),),
                 ),
               ),
               Align(
@@ -544,5 +549,4 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
     );
   }
 }
-
 ```
