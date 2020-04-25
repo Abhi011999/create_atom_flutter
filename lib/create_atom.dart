@@ -97,7 +97,12 @@ class _AtomState extends State<Atom> {
       child: Stack(
         children: <Widget>[
           Center(
-            child: widget.centerWidget ?? _nucleus(),
+            child: widget.centerWidget == null
+                ? _nucleus()
+                : Transform.scale(
+                    scale: 0.00465 * widget.containerSize,
+                    child: widget.centerWidget,
+                  ),
           ),
           Transform.rotate(
             angle: widget.orbit1Angle,
