@@ -37,7 +37,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   /// Booleans for determining the state of electron's animation.
   bool _isAnimHalfDone1, _isAnimHalfDone2, _isAnimHalfDone3 = false;
 
-  /// A tempoarary variable for storing calculated value through the equation.
+  /// A temporary variable for storing calculated value through the equation.
   double yValue;
 
   /// This function is the heart of the animation as it calculates
