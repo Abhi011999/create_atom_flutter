@@ -1,8 +1,14 @@
+// Copyright 2020 Abhishek Dubey. All rights reserved.
+// Use of this source code is governed by a MIT license that can be
+// found in the LICENSE file.
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'create_atom.dart';
 
+/// This widget creates and handles the animation
+/// for each of the electrons in the [Atom].
 class ElectronsAnim extends StatefulWidget {
   final Atom _atom;
 
@@ -12,26 +18,43 @@ class ElectronsAnim extends StatefulWidget {
   State<StatefulWidget> createState() => _ElectronsAnimState();
 }
 
-class _ElectronsAnimState extends State<ElectronsAnim>
-    with TickerProviderStateMixin {
+/// State creation of the electron's animation widget.
+class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateMixin {
+  /// Controllers for each electron.
   AnimationController _controller1, _controller2, _controller3;
+
+  /// Animation type as [double] for each electron.
   Animation<double> _animation1, _animation2, _animation3;
+
+  /// Current position of electrons from top of the position
+  /// in electron stacks.
   double _animX1, _animX2, _animX3;
+
+  /// Current position of electrons from left of the position
+  /// in electron stacks.
   double _animY1, _animY2, _animY3;
+
+  /// Booleans for determining the state of electron's animation.
   bool _isAnimHalfDone1, _isAnimHalfDone2, _isAnimHalfDone3 = false;
 
+  /// A tempoarary variable for storing calculated value through the equation.
+  double yValue;
+
+  /// This function is the heart of the animation as it calculates
+  /// the position of electrons from the left in the electron stack.
+  /// 
+  /// This is a derived mathematical equation from the general equation
+  /// of vertical ellipse. Electrons follow this path to revolve around
+  /// the nucleus.
+  ///                       x²    y²
+  /// General Equation ->   ─  +  ─  = 1
+  ///                       b²    a²
   double _animY(isAnimHalfDone, animX) {
-    return isAnimHalfDone
-        ? -0.51 *
-                sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) -
-                    pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) +
-            widget._atom.orbitAnimEndHeightFactor
-        : 0.51 *
-                sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) -
-                    pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) +
-            widget._atom.orbitAnimEndHeightFactor;
+    yValue = 0.51 * sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) - pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) + widget._atom.orbitAnimEndHeightFactor;
+    return isAnimHalfDone ? - yValue : yValue;
   }
 
+  /// Handles first electron's animation.
   void _anim1(bool didUpdate) {
     if (!didUpdate)
       _controller1 = AnimationController(
@@ -43,8 +66,7 @@ class _ElectronsAnimState extends State<ElectronsAnim>
         ..stop()
         ..duration = widget._atom.animDuration1;
 
-    _animation1 = Tween<double>(
-            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation1 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller1, curve: Curves.easeInOut))
           ..addListener(() {
             _animX1 = _animation1.value;
@@ -62,6 +84,7 @@ class _ElectronsAnimState extends State<ElectronsAnim>
     _controller1.repeat(reverse: true);
   }
 
+  /// Handles second electron's animation.
   void _anim2(bool didUpdate) {
     if (!didUpdate)
       _controller2 = AnimationController(
@@ -73,8 +96,7 @@ class _ElectronsAnimState extends State<ElectronsAnim>
         ..stop()
         ..duration = widget._atom.animDuration2;
 
-    _animation2 = Tween<double>(
-            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation2 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller2, curve: Curves.easeInOut))
           ..addListener(() {
             _animX2 = _animation2.value;
@@ -92,6 +114,7 @@ class _ElectronsAnimState extends State<ElectronsAnim>
     _controller2.repeat(reverse: true);
   }
 
+  /// Handles third electron's animation.
   void _anim3(bool didUpdate) {
     if (!didUpdate)
       _controller3 = AnimationController(
@@ -103,8 +126,7 @@ class _ElectronsAnimState extends State<ElectronsAnim>
         ..stop()
         ..duration = widget._atom.animDuration3;
 
-    _animation3 = Tween<double>(
-            begin: 0.0, end: widget._atom.orbitAnimEndHeight)
+    _animation3 = Tween<double>(begin: 0.0, end: widget._atom.orbitAnimEndHeight)
         .animate(CurvedAnimation(parent: _controller3, curve: Curves.easeInOut))
           ..addListener(() {
             _animX3 = _animation3.value;
@@ -225,6 +247,8 @@ class _ElectronsAnimState extends State<ElectronsAnim>
     );
   }
 
+  /// Build implementation of each electron stacks.
+  /// All stacks are [Center] positioned and [Colors.transparent]
   Widget build(BuildContext context) {
     return Center(
       child: Stack(
