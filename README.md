@@ -1,4 +1,4 @@
-# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"><img src="https://img.shields.io/badge/pub.dev-package-red?style=flat-square" alt="flutter"/></a> <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/></a> <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/></a>
+# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"><img src="https://img.shields.io/badge/pub.dev-v1.4.0-red?style=flat-square" alt="flutter"/></a> <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/></a> <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/></a>
 
 An animated widget that displays atom with a three electrons revolving around a nucleus at its center.
 
@@ -35,7 +35,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  create_atom: ^1.3.0
+  create_atom: ^1.4.0
 ```
 
 In your library add the following import:
