@@ -37,9 +37,6 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   /// Booleans for determining the state of electron's animation.
   bool _isAnimHalfDone1, _isAnimHalfDone2, _isAnimHalfDone3 = false;
 
-  /// A temporary variable for storing calculated value through the equation.
-  double yValue;
-
   /// This function is the heart of the animation as it calculates
   /// the position of electrons from the left in the electron stack.
   /// 
@@ -50,8 +47,9 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   /// General Equation ->   ─  +  ─  = 1
   ///                       b²    a²
   double _animY(isAnimHalfDone, animX) {
-    yValue = 0.51 * sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) - pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) + widget._atom.orbitAnimEndHeightFactor;
-    return isAnimHalfDone ? - yValue : yValue;
+    return isAnimHalfDone
+        ? - 0.51 * sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) - pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) + widget._atom.orbitAnimEndHeightFactor
+        : 0.51 * sqrt(pow(widget._atom.orbitAnimEndHeightFactor, 2) - pow(animX - widget._atom.orbitAnimEndHeightFactor, 2)) + widget._atom.orbitAnimEndHeightFactor;
   }
 
   /// Handles first electron's animation.
