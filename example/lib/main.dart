@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyAtoms(),
@@ -75,8 +76,9 @@ class _MyAtomsState extends State<MyAtoms> {
       backgroundColor: Colors.black,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.0),
-        child: SizedBox(height: 200.0,
-                  child: Row(
+        child: SizedBox(
+          height: 200.0,
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _showText("A "),
@@ -190,6 +192,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
   Duration _eDur1 = Duration(milliseconds: 1000);
   Duration _eDur2 = Duration(milliseconds: 2000);
   Duration _eDur3 = Duration(milliseconds: 3000);
+  Widget _centerW;
+
+  int _radioButton;
 
   void _changeNColor(Color colorNext) {
     setState(() => _nColor = colorNext);
@@ -221,8 +226,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
             displayThumbColor: true,
             showLabel: false,
             showIndicator: true,
-            indicatorBorderRadius:
-                BorderRadius.vertical(top: Radius.circular(25.0)),
+            indicatorBorderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
           ),
         ),
       ),
@@ -231,9 +235,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _scaleSlider() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "Scale :",
@@ -242,7 +246,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 21.5,
             max: 430,
             value: _scale,
@@ -255,9 +258,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _oAngleSlider1() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "Orbit 1 :",
@@ -266,7 +269,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 0.0,
             max: 2 * pi,
             divisions: 360,
@@ -280,9 +282,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _oAngleSlider2() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "Orbit 2 :",
@@ -291,7 +293,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 0.0,
             max: 2 * pi,
             divisions: 360,
@@ -305,9 +306,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _oAngleSlider3() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "Orbit 3 :",
@@ -316,7 +317,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 0.0,
             max: 2 * pi,
             divisions: 360,
@@ -348,10 +348,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
             child: Container(
               width: 30.0,
               height: 30.0,
-              decoration: BoxDecoration(
-                  color: _nColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white)),
+              decoration: BoxDecoration(color: _nColor, shape: BoxShape.circle, border: Border.all(color: Colors.white)),
             ),
           ),
           VerticalDivider(),
@@ -367,10 +364,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
             child: Container(
               width: 30.0,
               height: 30.0,
-              decoration: BoxDecoration(
-                  color: _oColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white)),
+              decoration: BoxDecoration(color: _oColor, shape: BoxShape.circle, border: Border.all(color: Colors.white)),
             ),
           ),
           VerticalDivider(),
@@ -386,10 +380,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
             child: Container(
               width: 30.0,
               height: 30.0,
-              decoration: BoxDecoration(
-                  color: _eColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white)),
+              decoration: BoxDecoration(color: _eColor, shape: BoxShape.circle, border: Border.all(color: Colors.white)),
             ),
           ),
         ],
@@ -399,9 +390,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _eSpeedSlider1() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "ESpeed 1 :",
@@ -410,7 +401,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider.adaptive(
-            useV2Slider: true,
             min: 50,
             max: 6000,
             value: _eSpeed1,
@@ -426,9 +416,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _eSpeedSlider2() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "ESpeed 2 :",
@@ -437,7 +427,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 50,
             max: 6000,
             value: _eSpeed2,
@@ -453,9 +442,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget _eSpeedSlider3() {
     return Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 10.0,
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
       children: [
         Text(
           "ESpeed 3 :",
@@ -464,7 +453,6 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Container(
           width: 350.0,
           child: Slider(
-            useV2Slider: true,
             min: 50,
             max: 6000,
             value: _eSpeed3,
@@ -478,12 +466,85 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
     );
   }
 
+  Widget _centerWidgetBar() {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: <Widget>[
+        Text(
+          "Center Widget :",
+          style: TextStyle(color: Colors.white70),
+          textAlign: TextAlign.justify,
+     overflow: TextOverflow.ellipsis,
+        ),
+        VerticalDivider(),
+        Radio(
+          value: 1,
+          groupValue: _radioButton,
+          onChanged: (val) {
+            setState(() {
+              _centerW = null;
+              _radioButton = val;
+            });
+          },
+        ),
+        Text(
+          "No",
+          style: TextStyle(color: Colors.white70),
+        ),
+        VerticalDivider(width: 5.0),
+        Radio(
+          value: 2,
+          groupValue: _radioButton,
+          onChanged: (val) {
+            setState(() {
+              _centerW = Atom(
+                size: 50,
+                nucleusColor: _nColor,
+                orbitsColor: _oColor,
+                electronsColor: _eColor,
+              );
+              _radioButton = val;
+            });
+          },
+        ),
+        Text(
+          "Atom",
+          style: TextStyle(color: Colors.white70),
+        ),
+        VerticalDivider(width: 5.0),
+        Radio(
+          value: 3,
+          groupValue: _radioButton,
+          onChanged: (val) {
+            setState(() {
+              _centerW = Text(
+                "Atom",
+                style: TextStyle(color: _nColor),
+              );
+              _radioButton = val;
+            });
+          },
+        ),
+        Text(
+          "Text",
+          style: TextStyle(color: Colors.white70),
+        ),
+      ],
+    );
+  }
+
+  void initState() {
+    super.initState();
+    _radioButton = 1;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+          padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
           child: Stack(
             children: [
               Align(
@@ -499,7 +560,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                   animDuration1: _eDur1,
                   animDuration2: _eDur2,
                   animDuration3: _eDur3,
-                  //centerWidget: Text("test", style: TextStyle(color: Colors.white),),
+                  centerWidget: _centerW,
                 ),
               ),
               Align(
@@ -510,8 +571,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                     child: Container(
                       height: 200,
                       decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(10.0)),
+                        color: Colors.white.withOpacity(0.15),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                       child: SingleChildScrollView(
                         padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
                         physics: BouncingScrollPhysics(),
@@ -528,6 +590,8 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                             _eSpeedSlider1(),
                             _eSpeedSlider2(),
                             _eSpeedSlider3(),
+                            Divider(thickness: 2.0),
+                            _centerWidgetBar(),
                           ],
                         ),
                       ),
