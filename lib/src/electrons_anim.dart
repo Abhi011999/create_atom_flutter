@@ -72,8 +72,16 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   double _beginRadians = (-1 / 2) * math.pi;
   double _endRadians = (3 / 2) * math.pi;
 
+  /// Control offsets for [CatmullRomCurve].
+  List<Offset> _controlOffsets = <Offset>[
+    Offset(0.10, 0.10),
+    Offset(0.40, 0.40),
+    Offset(0.60, 0.60),
+    Offset(0.90, 0.90),
+  ];
+
   /// Curve for electrons path.
-  Curve _revolvingCurve = Curves.linear;
+  Curve _revolvingCurve;
 
   /// Handles first electron's animation.
   void _anim1(bool didUpdate) {
@@ -167,6 +175,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   @override
   void initState() {
     super.initState();
+    _revolvingCurve = CatmullRomCurve(_controlOffsets);
     _anim1(false);
     _anim2(false);
     _anim3(false);
