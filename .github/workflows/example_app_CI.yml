@@ -14,7 +14,7 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1.3.2
       with:
-        channel: 'master'
+        channel: 'beta'
     - name: Upgrades flutter
       run: flutter upgrade
       working-directory: ./example
@@ -22,7 +22,7 @@ jobs:
       run: flutter config --enable-web
       working-directory: ./example
     - name: Install dependencies
-      run: flutter packages get
+      run: flutter pub get
       working-directory: ./example
     - name: Build Web
       run: flutter build web
