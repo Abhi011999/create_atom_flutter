@@ -1,3 +1,19 @@
+## [2.0.0] - 2019-06-13
+
+- #### package -
+    - Now the Atom's stack uses flutter's painter library implementation to draw the atom and its animations.
+    - Painter library uses Skia graphics renderer to render graphical entities, so performance boosted by a factor 10 !
+    - Some size and scaling factors slightly reduced.
+    - Reduced many widgets in the Atom's build implementation to make it more performant.
+    - Heavy code-refactor and reduced LOC.
+    - Implemented dual EaseInOut curve in a single curved path using `CatmullRomCurve`.
+    - Tried my best to mimic the original EaseInOut curve for both halves of the electron path.
+    - You can find more details here - https://api.flutter.dev/flutter/animation/CatmullRomCurve-class.html.
+
+- #### example app -
+    - Updated example app with `centerWidget` property and other v2 changes.
+    - App demo is now live at - http://abhi011999.github.io/create_atom_flutter/.
+
 ## [1.4.0] - 2019-04-25 (BREAKING CHANGE)
 
 - #### package -
