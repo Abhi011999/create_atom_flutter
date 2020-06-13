@@ -15,6 +15,55 @@ An animated widget that displays atom with a three electrons revolving around a 
   </tr>
 </table>
 
+## Some Famous logos using Atom
+
+<table>
+  <tr>
+    <th align="center">Name</th>
+    <th align="center">Code</th>
+    <th align="center">Logo</th>
+  </tr>
+  <tr>
+    <td align="center"><h2>React Logo</h2></td>
+    <td>
+      <pre lang="dart">
+        Atom(
+          size: 200.0,
+          orbit1Angle: math.pi / 2,
+          orbit2Angle: math.pi / 6,
+          orbit3Angle: - math.pi / 6,
+          orbitsColor: Color(0xFF00D8FF),
+          electronsColor: Color(0xFF00D8FF),
+          nucleusColor: Color(0xFF00D8FF),
+        ),
+        </pre>
+    </td>
+    <td><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/react_logo.gif" alt="react-logo"/></td>
+  </tr>
+  <tr>
+    <td align="center"><h2>Atom Text Editor Logo</h2></td>
+    <td>
+      <pre lang="dart">
+        Container(
+          width: 300.0,
+          height: 300.0,
+          color: Color(0xFF323232),
+          child: Atom(
+            size: 200.0,
+            orbit1Angle: math.pi / 1.9,
+            orbit2Angle: math.pi / 5,
+            orbit3Angle: -math.pi / 7,
+            orbitsColor: Color(0xFFEED9B7),
+            electronsColor: Color(0xFFEED9B7),
+            nucleusColor: Color(0xFFEED9B7),
+          ),
+        ),
+        </pre>
+    </td>
+  <td><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/atom_editor_logo.gif" alt="atom-editor-logo"/></td>
+  </tr>
+</table>
+
 ## Features
 
 - Can be scaled upto any size within parent widget boundaries
@@ -114,9 +163,11 @@ child: Atom(
 
 ## Example App
 
+### Checkout here - https://abhi011999.github.io/create_atom_flutter/
+
 <img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example_random.gif" width="49%" alt="Random Atoms"/> <img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/example_playground.gif" width="49%" alt="Atoms Playground"/>
 
-[Code Here](https://github.com/Abhi011999/create_atom_flutter/blob/master/example/lib/main.dart)
+**[Code](https://github.com/Abhi011999/create_atom_flutter/blob/master/example/lib/main.dart)**
 
 ## Changelog
 
