@@ -10,7 +10,7 @@ import 'create_atom.dart';
 class _ElectronsPainter extends CustomPainter {
   _ElectronsPainter(this.size, this.theta, this.color);
 
-  double size, theta;
+  double? size, theta;
   Color color;
 
   @override
@@ -32,8 +32,8 @@ class _ElectronsPainter extends CustomPainter {
     ///                         y = b * sin(θ) + b
     ///
     Offset eOffset = Offset(
-      center.dx / 2 * math.cos(theta) + center.dx,
-      center.dy * math.sin(theta) + center.dy,
+      center.dx / 2 * math.cos(theta!) + center.dx,
+      center.dy * math.sin(theta!) + center.dy,
     );
 
     Paint ePaint = Paint()
@@ -42,7 +42,7 @@ class _ElectronsPainter extends CustomPainter {
       ..strokeWidth = 1
       ..strokeCap = StrokeCap.round;
 
-    c.drawCircle(eOffset, size, ePaint);
+    c.drawCircle(eOffset, size!, ePaint);
   }
 
   @override
@@ -63,10 +63,10 @@ class ElectronsAnim extends StatefulWidget {
 /// State creation of the electron's animation widget.
 class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateMixin {
   /// Controllers for each electron.
-  AnimationController _controller1, _controller2, _controller3;
+  AnimationController? _controller1, _controller2, _controller3;
 
   /// Animation type as [double] for each electron.
-  Animation<double> _animation1, _animation2, _animation3;
+  Animation<double>? _animation1, _animation2, _animation3;
 
   /// Initial and final angle for equation.
   double _beginRadians = (-1 / 2) * math.pi;
@@ -81,7 +81,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
   ];
 
   /// Curve for electrons path.
-  Curve _revolvingCurve;
+  late Curve _revolvingCurve;
 
   /// Handles first electron's animation.
   void _anim1(bool didUpdate) {
@@ -91,7 +91,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
         vsync: this,
       )..repeat();
     else
-      _controller1
+      _controller1!
         ..stop()
         ..duration = widget._atom.animDuration1
         ..repeat();
@@ -101,7 +101,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
       end: _endRadians,
     ).animate(
       CurvedAnimation(
-        parent: _controller1,
+        parent: _controller1!,
         curve: _revolvingCurve,
       ),
     );
@@ -115,7 +115,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
         vsync: this,
       )..repeat();
     else
-      _controller2
+      _controller2!
         ..stop()
         ..duration = widget._atom.animDuration2
         ..repeat();
@@ -125,7 +125,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
       end: _endRadians,
     ).animate(
       CurvedAnimation(
-        parent: _controller2,
+        parent: _controller2!,
         curve: _revolvingCurve,
       ),
     );
@@ -139,7 +139,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
         vsync: this,
       )..repeat();
     else
-      _controller3
+      _controller3!
         ..stop()
         ..duration = widget._atom.animDuration3
         ..repeat();
@@ -149,7 +149,7 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
       end: _endRadians,
     ).animate(
       CurvedAnimation(
-        parent: _controller3,
+        parent: _controller3!,
         curve: _revolvingCurve,
       ),
     );
@@ -191,9 +191,9 @@ class _ElectronsAnimState extends State<ElectronsAnim> with TickerProviderStateM
 
   @override
   void dispose() {
-    _controller1.dispose();
-    _controller2.dispose();
-    _controller3.dispose();
+    _controller1!.dispose();
+    _controller2!.dispose();
+    _controller3!.dispose();
     super.dispose();
   }
 

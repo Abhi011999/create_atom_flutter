@@ -116,11 +116,11 @@ class Atom extends StatefulWidget {
   /// are set then [centerWidget] gets the preference.
   ///
   /// Scale factor - 0.005
-  final Widget centerWidget;
+  final Widget? centerWidget;
 
   Atom({
-    Key key,
-    @required this.size,
+    Key? key,
+    required this.size,
     this.orbit1Angle = 0.0,
     this.orbit2Angle = (1 / 3) * math.pi,
     this.orbit3Angle = (-1 / 3) * math.pi,
