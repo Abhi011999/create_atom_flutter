@@ -1,4 +1,12 @@
-## [2.0.0] - 2019-06-13
+## [2.0.0-nullsafety.0] - 2020-12-16
+
+- #### package -
+    - Migrated to NullSafety
+
+- #### example app -
+    - Migrated to NullSafety
+
+## [2.0.0] - 2020-06-13
 
 - #### package -
     - Now the Atom's stack uses flutter's painter library implementation to draw the atom and its animations.
@@ -14,7 +22,7 @@
     - Updated example app with `centerWidget` property and other v2 changes.
     - App demo is now live at - http://abhi011999.github.io/create_atom_flutter/.
 
-## [1.4.0] - 2019-04-25 (BREAKING CHANGE)
+## [1.4.0] - 2020-04-25 (BREAKING CHANGE)
 
 - #### package -
     - Replaced `scale` property with `size` property by implementing new logic
@@ -34,7 +42,7 @@
 - #### example app - 
     - Updated app with the breaking change
 
-## [1.3.0] - 2019-04-21
+## [1.3.0] - 2020-04-21
 
 - #### package -
     - Added a new `centerWidget` property and feature
@@ -45,16 +53,16 @@
 - #### example app -
     - Added a new playground mode (web support will be added soon)
 
-## [1.2.0] - 2019-04-10
+## [1.2.0] - 2020-04-10
 
 - Added example app for demonstration
 - Updated documentation
 - Removed un-used test file (tests can be added in future)
 
-## [1.1.0] - 2019-04-10
+## [1.1.0] - 2020-04-10
 
 - Added documentation and example project.
 
-## [1.0.0] - 2019-04-09
+## [1.0.0] - 2020-04-09
 
 - Initial release, go create some atoms !!
