@@ -7,6 +7,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:create_atom/create_atom.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 void main() {
@@ -107,15 +108,15 @@ class RandomAtoms extends StatefulWidget {
 
 class _RandomAtomsState extends State<RandomAtoms> {
   static final _rand = new Random();
-  static int _r, _g, _b;
+  static int? _r, _g, _b;
 
   int _genRand(int min, int max) => min + _rand.nextInt(max - min);
 
   _genColor() {
     return Color.fromRGBO(
-      _r,
-      _g,
-      _b,
+      _r!,
+      _g!,
+      _b!,
       1.0,
     );
   }
@@ -192,9 +193,9 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
   Duration _eDur1 = Duration(milliseconds: 1000);
   Duration _eDur2 = Duration(milliseconds: 2000);
   Duration _eDur3 = Duration(milliseconds: 3000);
-  Widget _centerW;
+  Widget? _centerW;
 
-  int _radioButton;
+  int? _radioButton;
 
   void _changeNColor(Color colorNext) {
     setState(() => _nColor = colorNext);
@@ -481,7 +482,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Radio(
           value: 1,
           groupValue: _radioButton,
-          onChanged: (val) {
+          onChanged: (dynamic val) {
             setState(() {
               _centerW = null;
               _radioButton = val;
@@ -496,7 +497,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Radio(
           value: 2,
           groupValue: _radioButton,
-          onChanged: (val) {
+          onChanged: (dynamic val) {
             setState(() {
               _centerW = Atom(
                 size: 50,
@@ -516,7 +517,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
         Radio(
           value: 3,
           groupValue: _radioButton,
-          onChanged: (val) {
+          onChanged: (dynamic val) {
             setState(() {
               _centerW = Text(
                 "Atom",
