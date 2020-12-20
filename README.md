@@ -1,4 +1,4 @@
-# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"><img src="https://img.shields.io/badge/pub.dev-v2.0.0-red?style=flat-square" alt="flutter"/></a> <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/></a> <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/></a>
+# create_atom <span> | </span> <a href="https://pub.dev/packages/create_atom"><img src="https://img.shields.io/badge/pub.dev-v2.1.0-red?style=flat-square" alt="flutter"/></a> <a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Built with-flutter-blue?style=flat-square" alt="flutter"/></a> <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-purple?style=flat-square" alt="flutter"/></a>
 
 An animated widget that displays atom with a three electrons revolving around a nucleus at its center.
 
@@ -62,6 +62,28 @@ An animated widget that displays atom with a three electrons revolving around a 
     </td>
   <td><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/atom_editor_logo.gif" alt="atom-editor-logo"/></td>
   </tr>
+    <tr>
+    <td align="center"><h2>Proton DB Logo</h2></td>
+    <td>
+      <pre lang="dart">
+        Container(
+          width: 300.0,
+          height: 300.0,
+          color: Color(0xFF1A2233),
+          child: Atom(
+            size: 200.0,
+            nucleusRadiusFactor: 2.5,
+            orbitsWidthFactor: 6.0,
+            orbit1Angle: math.pi / 2,
+            orbit2Angle: math.pi / 6,
+            orbit3Angle: -math.pi / 6,
+            orbitsColor: Color(0xFFF50057),
+          ),
+        ),
+        </pre>
+    </td>
+  <td><img src="https://raw.githubusercontent.com/Abhi011999/create_atom_flutter/master/images/protonDB_logo.gif" alt="atom-editor-logo"/></td>
+  </tr>
 </table>
 
 ## Features
@@ -72,6 +94,8 @@ An animated widget that displays atom with a three electrons revolving around a 
 - 3 electron orbits (support for more may come later)
 - Orbits angle can be changed
 - Orbits color can be changed (support for individual color may come later)
+- Orbits width can be changed
+- Nucleus size can be changed
 - Nucleus color can be changed
 - Electrons color can be changed (support for individual color may come later)
 - Individual electron's revolution duration can be changed
@@ -84,7 +108,7 @@ In the `pubspec.yaml` of your flutter project, add the following dependency:
 ```yaml
 dependencies:
   ...
-  create_atom: ^2.0.0
+  create_atom: ^2.1.0-nullsafety
 ```
 
 In your library add the following import:
@@ -108,9 +132,9 @@ child: Atom(
 ```
 
 Yeah, just like that.
-**All properties are optional except `size` property.**
 
-**You will get a black atom by default.**
+- All properties are optional except `size` property.
+- You will get a black atom by default.
 
 #### centerWidget property usage -
 
@@ -125,41 +149,45 @@ child: Atom(
 ...
 ```
 
-**Note:** If both `nucleusColor` and `centerWidget` are set then the Widget will get preference.
+**Note:** If both `nucleusColor` and `centerWidget` are set then the `centerWidget` will get preference.
 
 ## Properties
 
 #### Definitions -
 
-| Property       | Definition                                 |
-| -------------- | ------------------------------------------ |
-| size           | Defines size of the atom's container       |
-| orbit1angle    | Defines 1st orbit's angle in radians       |
-| orbit2angle    | Defines 2nd orbit's angle in radians       |
-| orbit3angle    | Defines 3rd orbit's angle in radians       |
-| nucleusColor   | Defines Nucleus Color                      |
-| orbitsColor    | Defines Orbits Color                       |
-| electronsColor | Defines Electrons Color                    |
-| animDuration1  | Defines Animation Duration of 1st electron |
-| animDuration2  | Defines Animation Duration of 2nd electron |
-| animDuration3  | Defines Animation Duration of 3rd electron |
-| centerWidget   | Defines a widget to display at center      |
+| Property            | Definition                                 |
+| ------------------- | ------------------------------------------ |
+| size                | Defines size of the atom's container       |
+| nucleusRadiusFactor | Defines radius size factor of nucleus      |
+| orbitsWidthFactor   | Defines width factor of the orbits         |
+| orbit1angle         | Defines 1st orbit's angle in radians       |
+| orbit2angle         | Defines 2nd orbit's angle in radians       |
+| orbit3angle         | Defines 3rd orbit's angle in radians       |
+| nucleusColor        | Defines Nucleus Color                      |
+| orbitsColor         | Defines Orbits Color                       |
+| electronsColor      | Defines Electrons Color                    |
+| animDuration1       | Defines Animation Duration of 1st electron |
+| animDuration2       | Defines Animation Duration of 2nd electron |
+| animDuration3       | Defines Animation Duration of 3rd electron |
+| centerWidget        | Defines a widget to display at center      |
 
 #### Types and Initial Values -
 
-| Property       | Type       | Initial Value                        |
-| -------------- | ---------- | ------------------------------------ |
-| size           | `double`   | `null` (required)                    |
-| orbit1angle    | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
-| orbit2angle    | `double`   | `pi/3` (Radians), `60.0` (Degrees)   |
-| orbit3angle    | `double`   | `-pi/3` (Radians), `-60.0` (Degrees) |
-| nucleusColor   | `Color`    | `Colors.black`                       |
-| orbitsColor    | `Color`    | `Colors.black`                       |
-| electronsColor | `Color`    | `Colors.black`                       |
-| animDuration1  | `Duration` | `Duration(seconds: 1)`               |
-| animDuration2  | `Duration` | `Duration(seconds: 2)`               |
-| animDuration3  | `Duration` | `Duration(seconds: 3)`               |
-| centerWidget   | `Widget`   | `null`                               |
+| Property            | Type       | Initial Value                        |
+| ------------------- | ---------- | ------------------------------------ |
+| size                | `double`   | `null` (required)                    |
+| nucleusRadiusFactor | `double`   | `1.0`                                |
+| orbitsWidthFactor   | `double`   | `1.0`                                |
+| orbit1angle         | `double`   | `0.0` (Radians), `0.0` (Degrees)     |
+| orbit2angle         | `double`   | `pi/3` (Radians), `60.0` (Degrees)   |
+| orbit3angle         | `double`   | `-pi/3` (Radians), `-60.0` (Degrees) |
+| nucleusColor        | `Color`    | `Colors.black`                       |
+| orbitsColor         | `Color`    | `Colors.black`                       |
+| electronsColor      | `Color`    | `Colors.black`                       |
+| animDuration1       | `Duration` | `Duration(seconds: 1)`               |
+| animDuration2       | `Duration` | `Duration(seconds: 2)`               |
+| animDuration3       | `Duration` | `Duration(seconds: 3)`               |
+| centerWidget        | `Widget`   | `null`                               |
 
 ## Example App
 
@@ -171,7 +199,7 @@ child: Atom(
 
 ## Changelog
 
-### Breaking Changes from v1.4.0 kindly see changelog
+### Breaking Changes after the nullsafety migration from v2.0.0-nullsafety.0, see changelog for more info -
 
 See [CHANGELOG.md](https://github.com/Abhi011999/create_atom_flutter/blob/master/CHANGELOG.md) for recent changes.
 

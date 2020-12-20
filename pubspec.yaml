@@ -1,6 +1,6 @@
 name: create_atom
 description: An animated widget that displays atom with three electrons revolving around a nucleus at its center.
-version: 2.0.0-nullsafety.0
+version: 2.1.0-nullsafety
 homepage: https://github.com/Abhi011999/create_atom_flutter
 repository: https://github.com/Abhi011999/create_atom_flutter
 

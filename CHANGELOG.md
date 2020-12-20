@@ -1,3 +1,16 @@
+## [2.1.0-nullsafety] - 2020-12-20
+
+- #### This version is a stable nullsafety release but dart's nullsafety is still in preview so you have to make changes to your app/package in which you are going to use it.
+
+- #### package -
+    - Added two new customization properties - `nucleusRadiusFactor` and `orbitsWidthFactor`
+    - One minor nullsafety fix
+
+- #### example app -
+    - Updated app with new properties
+    - Background color can also be changed now
+    - Minor nullsafety fixes
+
 ## [2.0.0-nullsafety.0] - 2020-12-16
 
 - #### package -
