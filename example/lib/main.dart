@@ -7,7 +7,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:create_atom/create_atom.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 void main() {
@@ -60,11 +59,11 @@ class _MyAtomsState extends State<MyAtoms> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.all_inclusive),
-          title: Text("Random"),
+          label: "Random",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.play_arrow),
-          title: Text("Playground"),
+          label: "Playground",
         ),
       ],
       onTap: (int index) => setState(() => _currentIndex = index),
@@ -181,12 +180,15 @@ class AtomPlayground extends StatefulWidget {
 
 class _AtomPlaygroundState extends State<AtomPlayground> {
   double _scale = 200;
+  double _nRadiusFactor = 1.0;
+  double _oWidthFactor = 1.0;
   double _oAngle1 = 0.0;
   double _oAngle2 = 1.047198;
   double _oAngle3 = 5.235988;
   Color _nColor = Color(0xffffffff);
   Color _oColor = Color(0xffffffff);
   Color _eColor = Color(0xffffffff);
+  Color _bgColor = Color(0xff1a1a1a);
   double _eSpeed1 = 1000.0;
   double _eSpeed2 = 2000.0;
   double _eSpeed3 = 3000.0;
@@ -209,29 +211,23 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
     setState(() => _eColor = colorNext);
   }
 
+  void _changeBGColor(Color colorNext) {
+    setState(() => _bgColor = colorNext);
+  }
+
   _colorPicker(colorValue, colorFunction) {
     return showDialog(
-      context: context,
-      child: AlertDialog(
-        titlePadding: EdgeInsets.all(0.0),
-        contentPadding: const EdgeInsets.all(0.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-        content: SingleChildScrollView(
-          child: SlidePicker(
-            pickerColor: colorValue,
-            onColorChanged: colorFunction,
-            paletteType: PaletteType.rgb,
-            enableAlpha: false,
-            displayThumbColor: true,
-            showLabel: false,
-            showIndicator: true,
-            indicatorBorderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
-          ),
-        ),
-      ),
-    );
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: SingleChildScrollView(
+              child: ColorPicker(
+                pickerColor: colorValue,
+                onColorChanged: colorFunction,
+              ),
+            ),
+          );
+        });
   }
 
   Widget _scaleSlider() {
@@ -251,6 +247,52 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
             max: 430,
             value: _scale,
             onChanged: (val) => setState(() => _scale = val),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _nRadiusSlider() {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
+      children: [
+        Text(
+          "Nucleus Radius Factor :",
+          style: TextStyle(color: Colors.white70),
+        ),
+        Container(
+          width: 350.0,
+          child: Slider(
+            min: 0.1,
+            max: 10.0,
+            value: _nRadiusFactor,
+            onChanged: (val) => setState(() => _nRadiusFactor = val),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _oWidthSlider() {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      runSpacing: 10.0,
+      children: [
+        Text(
+          "Orbits Width Factor :",
+          style: TextStyle(color: Colors.white70),
+        ),
+        Container(
+          width: 350.0,
+          child: Slider(
+            min: 0.1,
+            max: 10.0,
+            value: _oWidthFactor,
+            onChanged: (val) => setState(() => _oWidthFactor = val),
           ),
         ),
       ],
@@ -384,6 +426,22 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
               decoration: BoxDecoration(color: _eColor, shape: BoxShape.circle, border: Border.all(color: Colors.white)),
             ),
           ),
+          VerticalDivider(),
+          Text(
+            "Backgroud Color :",
+            style: TextStyle(color: Colors.white70),
+          ),
+          VerticalDivider(),
+          GestureDetector(
+            onTap: () {
+              _colorPicker(_bgColor, _changeBGColor);
+            },
+            child: Container(
+              width: 30.0,
+              height: 30.0,
+              decoration: BoxDecoration(color: _bgColor, shape: BoxShape.circle, border: Border.all(color: Colors.white)),
+            ),
+          ),
         ],
       ),
     );
@@ -476,7 +534,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
           "Center Widget :",
           style: TextStyle(color: Colors.white70),
           textAlign: TextAlign.justify,
-     overflow: TextOverflow.ellipsis,
+          overflow: TextOverflow.ellipsis,
         ),
         VerticalDivider(),
         Radio(
@@ -542,7 +600,7 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: _bgColor,
       body: Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
@@ -552,6 +610,8 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                 alignment: Alignment.topCenter,
                 child: Atom(
                   size: _scale,
+                  nucleusRadiusFactor: _nRadiusFactor,
+                  orbitsWidthFactor: _oWidthFactor,
                   orbit1Angle: _oAngle1,
                   orbit2Angle: _oAngle2,
                   orbit3Angle: _oAngle3,
@@ -572,28 +632,33 @@ class _AtomPlaygroundState extends State<AtomPlayground> {
                     child: Container(
                       height: 200,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
+                        color: Colors.black.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: SingleChildScrollView(
-                        padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
-                        physics: BouncingScrollPhysics(),
-                        child: Column(
-                          children: [
-                            _scaleSlider(),
-                            Divider(thickness: 2.0),
-                            _oAngleSlider1(),
-                            _oAngleSlider2(),
-                            _oAngleSlider3(),
-                            Divider(thickness: 2.0),
-                            _colorSelectors(),
-                            Divider(thickness: 2.0),
-                            _eSpeedSlider1(),
-                            _eSpeedSlider2(),
-                            _eSpeedSlider3(),
-                            Divider(thickness: 2.0),
-                            _centerWidgetBar(),
-                          ],
+                      child: Scrollbar(
+                        child: SingleChildScrollView(
+                          padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
+                          physics: BouncingScrollPhysics(),
+                          child: Column(
+                            children: [
+                              _scaleSlider(),
+                              Divider(thickness: 2.0),
+                              _nRadiusSlider(),
+                              _oWidthSlider(),
+                              Divider(thickness: 2.0),
+                              _oAngleSlider1(),
+                              _oAngleSlider2(),
+                              _oAngleSlider3(),
+                              Divider(thickness: 2.0),
+                              _colorSelectors(),
+                              Divider(thickness: 2.0),
+                              _eSpeedSlider1(),
+                              _eSpeedSlider2(),
+                              _eSpeedSlider3(),
+                              Divider(thickness: 2.0),
+                              _centerWidgetBar(),
+                            ],
+                          ),
                         ),
                       ),
                     ),

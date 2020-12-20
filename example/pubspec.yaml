@@ -15,7 +15,10 @@ dev_dependencies:
     sdk: flutter
   create_atom:
     path: ../
-  flutter_colorpicker: ^0.3.2
+  flutter_colorpicker:
+    git:
+      url: git@github.com:mchome/flutter_colorpicker.git
+      ref: master
 
 flutter:
   uses-material-design: true
