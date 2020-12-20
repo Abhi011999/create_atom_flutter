@@ -31,9 +31,10 @@ class _NucleusPainter extends CustomPainter {
 }
 
 class _OrbitsPainter extends CustomPainter {
-  _OrbitsPainter(this.strokeWidth, this.color);
+  _OrbitsPainter(this.strokeWidth, this.strokeWidthFactor, this.color);
 
   double strokeWidth;
+  double strokeWidthFactor;
   Color color;
 
   @override
@@ -43,7 +44,7 @@ class _OrbitsPainter extends CustomPainter {
     Paint oPaint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth / 3.0;
+      ..strokeWidth = strokeWidthFactor * (strokeWidth / 3.0);
 
     c.drawOval(
       Rect.fromCenter(
@@ -68,13 +69,23 @@ class Atom extends StatefulWidget {
 
   /// Size of atom's nucleus.
   ///
-  /// Size factor - 0.05
+  /// Size factor -> 0.05
   final double nucleusSize;
+
+  /// Radius factor of atom's nucleus.
+  ///
+  /// Default -> 1.0
+  final double nucleusRadiusFactor;
 
   /// Size of atom's electron.
   ///
-  /// Size factor - 0.035
+  /// Size factor -> 0.035
   final double electronSize;
+
+  /// Width factor for orbits.
+  ///
+  /// Default -> 1.0
+  final double orbitsWidthFactor;
 
   /* Angles */
 
@@ -115,12 +126,14 @@ class Atom extends StatefulWidget {
   /// Note: If both the [nucleusColor] and [centerWidget]
   /// are set then [centerWidget] gets the preference.
   ///
-  /// Scale factor - 0.005
+  /// Scale factor -> 0.005
   final Widget? centerWidget;
 
   Atom({
     Key? key,
     required this.size,
+    this.nucleusRadiusFactor = 1.0,
+    this.orbitsWidthFactor = 1.0,
     this.orbit1Angle = 0.0,
     this.orbit2Angle = (1 / 3) * math.pi,
     this.orbit3Angle = (-1 / 3) * math.pi,
@@ -131,8 +144,8 @@ class Atom extends StatefulWidget {
     this.animDuration2 = const Duration(seconds: 2),
     this.animDuration3 = const Duration(seconds: 3),
     this.centerWidget,
-  })  : assert(size == null || size > 0),
-        nucleusSize = 0.05 * size,
+  })  : assert(size > 0),
+        nucleusSize = 0.05 * nucleusRadiusFactor * size,
         electronSize = 0.035 * size,
         super(key: key);
 
@@ -147,7 +160,7 @@ class _AtomState extends State<Atom> {
       angle: angle,
       child: CustomPaint(
         size: s,
-        painter: _OrbitsPainter(widget.electronSize, widget.orbitsColor),
+        painter: _OrbitsPainter(widget.electronSize, widget.orbitsWidthFactor, widget.orbitsColor),
       ),
     );
   }
